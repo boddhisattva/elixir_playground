@@ -77,10 +77,30 @@ defmodule Lists do
     iex> Lists.sum_pairs([5, 3, 8, 9])
     [8, 17]
 
-    iex> Lists.sum_pairs([5, 3, 8])
+    iex> Lists.sum_pairs([5, 3, 8]) # the result is false for a list with odd number of elements
     false
   """
   def sum_pairs([]), do: []
   def sum_pairs([h | t]) when length([h | t]) |> Integer.is_odd == true, do: false
   def sum_pairs([h1, h2 | t]), do: [h1 + h2 | sum_pairs(t)]
+
+  @doc """
+  Add the ability to calculate the result based on the logic with regard to a passed in function.
+  This allows one to use the map function with any transformation function passed with regard to it.
+
+  ## Examples
+
+    iex> Lists.map([1, 2, 3], fn x -> 2*x end)
+    [2, 4, 6]
+
+    iex> Lists.map([1, 2, 3], fn x -> 2*x*x end)
+    [2, 8, 18]
+
+    iex> Lists.map([1, 2, 3], &(2*&1*&1))
+    [2, 8, 18]
+  """
+  def map([], _func), do: []
+  def map([h | t], func) do
+    [ func.(h) | map(t, func) ]
+  end
 end
