@@ -17,4 +17,19 @@ defmodule Lists do
 
   def len([]), do: 0
   def len([_h | t]), do: 1 + len(t)
+
+  @doc """
+  Add the ability to calculate the double of each element in a list
+
+  ## Examples
+
+    iex> Lists.double([])
+    []
+
+    iex> Lists.double([5, 3])
+    [10, 6]
+
+  """
+  def double([]), do: []
+  def double([h|t]), do: [ 2 * h | double(t)]
 end
