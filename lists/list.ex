@@ -32,4 +32,19 @@ defmodule Lists do
   """
   def double([]), do: []
   def double([h|t]), do: [ 2 * h | double(t)]
+
+  @doc """
+  Add the ability to calculate the double of each element in a list
+
+  ## Examples
+
+    iex> Lists.square([])
+    []
+
+    iex> Lists.square([5, 3])
+    [25, 9]
+
+  """
+  def square([]), do: []
+  def square([h|t]), do: [ h * h | square(t)]
 end
