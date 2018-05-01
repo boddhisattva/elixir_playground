@@ -47,4 +47,19 @@ defmodule Lists do
   """
   def square([]), do: []
   def square([h|t]), do: [ h * h | square(t)]
+
+  @doc """
+  Add the ability to calculate the sum of pairs of elements in a list
+
+  ## Examples
+
+    iex> Lists.sum_pairs([])
+    []
+
+    iex> Lists.sum_pairs([5, 3, 8, 9])
+    [8, 17]
+
+  """
+  def sum_pairs([]), do: []
+  def sum_pairs([h1, h2 | t]), do: [h1 + h2 | sum_pairs(t)]
 end
