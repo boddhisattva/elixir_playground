@@ -1,4 +1,6 @@
 defmodule Lists do
+  require Integer
+
   @moduledoc """
   Documentation for a set of recursive functions tried around a List.
   """
@@ -34,7 +36,7 @@ defmodule Lists do
   def double([h|t]), do: [ 2 * h | double(t)]
 
   @doc """
-  Add the ability to calculate the double of each element in a list
+  Add the ability to calculate the square of each element in a list
 
   ## Examples
 
@@ -59,7 +61,10 @@ defmodule Lists do
     iex> Lists.sum_pairs([5, 3, 8, 9])
     [8, 17]
 
+    iex> Lists.sum_pairs([5, 3, 8])
+    false
   """
   def sum_pairs([]), do: []
+  def sum_pairs([h | t]) when length([h | t]) |> Integer.is_odd == true, do: false
   def sum_pairs([h1, h2 | t]), do: [h1 + h2 | sum_pairs(t)]
 end
